@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: "jdbc:mysql://localhost:3306/test-api?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC"
-    username: ENC(xSevd3fW1RQzoYfXvnriXg==)
-    password: ENC(xR7+cwI+/zj6h6HwINjdm5xJxbndY5l5)
+    username: ENC(BY3yvBp8ooLt8y/rcj4A9g==)
+    password: ENC(O+f2ALd1DSW01lK9cdoPFCNNIAAVuU/D)
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 jwt:
@@ -14,4 +14,8 @@ jwt:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-    password : 1234
+    algorithm: PBEWithMD5AndDES
+    pool-size: 2
+    string-output-type: base64
+    key-obtention-iterations: 100000
+    password: password
