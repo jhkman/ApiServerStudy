@@ -25,12 +25,22 @@ import java.util.stream.Collectors;
 public class JwtTokenProvider {
     private final Key key;
 
+    /**
+     * Instantiates a new Jwt token provider.
+     *
+     * @param secretKey the String
+     */
     public JwtTokenProvider(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    // 유저 정보를 가지고 AccessToken, RefreshToken 을 생성하는 메서드
+    /**
+     * 유저 정보를 가지고 AccessToken, RefreshToken 을 생성하는 메서드
+     *
+     * @param authentication the authentication
+     * @return the token info
+     */
     public TokenInfo generateToken(Authentication authentication) {
         // 권한 가져오기
         String authorities = authentication.getAuthorities().stream()
@@ -60,7 +70,12 @@ public class JwtTokenProvider {
                 .build();
     }
 
-    // JWT 토큰을 복호화하여 토큰에 들어있는 정보를 꺼내는 메서드
+    /**
+     * JWT 토큰을 복호화하여 토큰에 들어있는 정보를 꺼내는 메서드
+     *
+     * @param accessToken the String
+     * @return the authentication
+     */
     public Authentication getAuthentication(String accessToken) {
         // 토큰 복호화
         Claims claims = parseClaims(accessToken);
@@ -81,6 +96,13 @@ public class JwtTokenProvider {
     }
 
     // 토큰 정보를 검증하는 메서드
+
+    /**
+     * 토큰 정보를 검증하는 메서드
+     *
+     * @param token the String
+     * @return the boolean
+     */
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
@@ -97,6 +119,12 @@ public class JwtTokenProvider {
         return false;
     }
 
+    /**
+     * 토큰 복호화를 위한 메서드
+     *
+     * @param accessToken the String
+     * @return the Claims
+     */
     private Claims parseClaims(String accessToken) {
         try {
             return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(accessToken).getBody();
