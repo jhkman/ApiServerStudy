@@ -1,5 +1,5 @@
 HELP.md
-.gradlew
+.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -37,4 +37,4 @@ out/
 .vscode/
 
 #txt
-!**/src/main/resources/jasypt-encryptor-password.txt.txt
+!**/src/main/resources/jasypt-encryptor-password.txt
