@@ -37,4 +37,4 @@ out/
 .vscode/
 
 #txt
-!**/src/main/resources/jasypt-encryptor-password.txt
+/src/main/resources/jasypt-encryptor-password.txt
