@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/members")
 public class MainController {
     @PostMapping("/main")
-    public String Test(){
+    public String Main(){
         return "hello world";
+    }
+
+    @PostMapping("/test")
+    public String Test(){
+        return "Test";
     }
 }
