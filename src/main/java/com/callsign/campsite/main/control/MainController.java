@@ -18,6 +18,6 @@ public class MainController {
 
     @PostMapping("/test")
     public String Test(){
-        return "Test";
+        return "update Test";
     }
 }
