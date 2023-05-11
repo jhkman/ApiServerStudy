@@ -20,4 +20,9 @@ public class MainController {
     public String Test(){
         return "update Test";
     }
+
+    @PostMapping("/test2")
+    public String Test2(){
+        return "update Test";
+    }
 }
